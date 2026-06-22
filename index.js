@@ -58,7 +58,7 @@ app.all(/^\/api\/auth\/.*$/, toNodeHandler(auth));
 // });
 
 // all other routes after this
-//app.post("/google-login", async (req, res) => {});
+
 
 
 const client = new MongoClient(process.env.MONGODB_URI, {
