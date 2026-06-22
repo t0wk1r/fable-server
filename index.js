@@ -1,12 +1,13 @@
 require("dotenv").config();
 const { auth } = require("./auth");
+const { toNodeHandler } = require("better-auth/node");
 
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const bcrypt = require("bcrypt");
-const Stripe = require("stripe");
+//const Stripe = require("stripe");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
@@ -178,6 +179,8 @@ async function run() {
                 },
             });
         });
+
+        app.all("/api/auth/*", toNodeHandler(auth));
         // google login 
         app.post("/google-login", async (req, res) => {
             const { name, email, photoURL } = req.body;
