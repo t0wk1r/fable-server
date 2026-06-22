@@ -34,7 +34,7 @@ app.use(
 );
 
 app.use(express.json());
-app.all("/api/auth/*", toNodeHandler(auth));
+app.all(/^\/api\/auth\/.*$/, toNodeHandler(auth));
 
 // app.use("/api/auth", async (req, res) => {
 //     const url = new URL(req.originalUrl, process.env.BETTER_AUTH_URL);
