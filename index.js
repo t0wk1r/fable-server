@@ -57,7 +57,7 @@ app.all(/^\/api\/auth\/.*$/, toNodeHandler(auth));
 //     res.send(body);
 // });
 
-// all other routes after this
+
 
 
 
