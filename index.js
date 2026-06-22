@@ -34,6 +34,7 @@ app.use(
 );
 
 app.use(express.json());
+app.all("/api/auth/*", toNodeHandler(auth));
 
 // app.use("/api/auth", async (req, res) => {
 //     const url = new URL(req.originalUrl, process.env.BETTER_AUTH_URL);
@@ -55,6 +56,9 @@ app.use(express.json());
 //     const body = await response.text();
 //     res.send(body);
 // });
+
+// all other routes after this
+//app.post("/google-login", async (req, res) => {});
 
 
 const client = new MongoClient(process.env.MONGODB_URI, {
@@ -180,7 +184,7 @@ async function run() {
             });
         });
 
-        app.all("/api/auth/*", toNodeHandler(auth));
+        
         // google login 
         app.post("/google-login", async (req, res) => {
             const { name, email, photoURL } = req.body;
