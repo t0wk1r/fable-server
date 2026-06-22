@@ -22,15 +22,15 @@ const port = process.env.PORT || 5000;
 
 
 const allowedOrigins = [
-  "http://localhost:3000",
-  process.env.CLIENT_URL,
+    "http://localhost:3000",
+    process.env.CLIENT_URL,
 ].filter(Boolean);
 
 app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
+    cors({
+        origin: allowedOrigins,
+        credentials: true,
+    })
 );
 
 app.use(express.json());
@@ -161,7 +161,7 @@ async function run() {
             });
         });
 
-        
+
         // google login 
         app.post("/google-login", async (req, res) => {
             const { name, email, photoURL } = req.body;
