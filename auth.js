@@ -6,8 +6,17 @@ const auth = betterAuth({
 
   trustedOrigins: [
     "http://localhost:3000",
+    "https://fable-client-blond.vercel.app",
     process.env.CLIENT_URL,
   ].filter(Boolean),
+
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "none",
+      secure: true,
+      httpOnly: true,
+    },
+  },
 
   socialProviders: {
     google: {
