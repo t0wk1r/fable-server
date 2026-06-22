@@ -36,29 +36,6 @@ app.use(
 app.use(express.json());
 app.all(/^\/api\/auth\/.*$/, toNodeHandler(auth));
 
-// app.use("/api/auth", async (req, res) => {
-//     const url = new URL(req.originalUrl, process.env.BETTER_AUTH_URL);
-
-//     const request = new Request(url.toString(), {
-//         method: req.method,
-//         headers: req.headers,
-//         body: req.method === "GET" || req.method === "HEAD" ? undefined : JSON.stringify(req.body),
-//     });
-
-//     const response = await auth.handler(request);
-
-//     res.status(response.status);
-
-//     response.headers.forEach((value, key) => {
-//         res.setHeader(key, value);
-//     });
-
-//     const body = await response.text();
-//     res.send(body);
-// });
-
-
-
 
 
 const client = new MongoClient(process.env.MONGODB_URI, {
