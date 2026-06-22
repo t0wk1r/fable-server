@@ -20,11 +20,16 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 app.use(
-    cors({
-        origin: "http://localhost:3000",
-        credentials: true,
-    })
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
 );
 
 app.use(express.json());
